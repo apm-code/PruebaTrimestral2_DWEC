@@ -1,1 +1,41 @@
-<p>new works!</p>
+<section class="new">
+  <div class="new__card glass">
+    <h2>Crear Nueva Serie</h2>
+    
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+      <div class="form__group">
+        <label>Título</label>
+        <input class="input" type="text" formControlName="title" placeholder="Ej: One Piece" />
+        <div class="help" *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+          <span *ngIf="form.get('title')?.errors?.['required']">Obligatorio.</span>
+          <span *ngIf="form.get('title')?.errors?.['minlength']">Mínimo 3 caracteres.</span>
+        </div>
+      </div>
+
+      <div class="form__group">
+        <label>Canal</label>
+        <input class="input" type="text" formControlName="channel" placeholder="Ej: Netflix" />
+        <div class="help" *ngIf="form.get('channel')?.touched && form.get('channel')?.invalid">
+          Obligatorio.
+        </div>
+      </div>
+
+      <div class="form__group">
+        <label>Rating (0 a 10)</label>
+        <input class="input" type="number" formControlName="rating" min="0" max="10" />
+        <div class="help" *ngIf="form.get('rating')?.touched && form.get('rating')?.invalid">
+          <span *ngIf="form.get('rating')?.errors?.['min']">Mínimo 0.</span>
+          <span *ngIf="form.get('rating')?.errors?.['max']">Máximo 10.</span>
+          <span *ngIf="form.get('rating')?.errors?.['required']">Obligatorio.</span>
+        </div>
+      </div>
+
+      <button class="btn" type="submit" [disabled]="form.invalid || submitting">
+        {{ submitting ? 'Enviando...' : 'Crear Serie' }}
+      </button>
+    </form>
+
+    <div class="alert" *ngIf="message">{{ message }}</div>
+  </div>
+</section>

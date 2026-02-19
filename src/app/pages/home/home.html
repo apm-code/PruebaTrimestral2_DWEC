@@ -1,1 +1,25 @@
-<p>home works!</p>
+<section class="home">
+  <div class="home__header glass">
+    <h2>Listado de Series</h2>
+    <p>Series obtenidas desde la API</p>
+  </div>
+
+  <p *ngIf="loading" class="home__status">Cargando...</p>
+  <p *ngIf="error" class="home__error">{{ error }}</p>
+
+  <div *ngIf="!loading && !error" class="grid">
+    <article class="card glass" *ngFor="let s of series">
+      <div class="card__imgWrap">
+        <img class="card__img" [src]="s.image" [alt]="s.title"
+          loading="lazy" />
+        <span class="card__badge">★ {{ s.rating }}</span>
+      </div>
+
+      <div class="card__body">
+        <h3 class="card__title">{{ s.title }}</h3>
+        <p class="card__meta"><span>Canal:</span> {{ s.channel }}</p>
+        <p class="card__meta"><span>Rating:</span> {{ s.rating }}</p>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+.new {
+  display: flex;
+  justify-content: center;
+}
+
+.new__card {
+  width: min(520px, 92vw);
+  padding: 18px;
+}
+
+.new__card h2 {
+  margin: 0 0 6px;
+}
+
+.new__card p {
+  margin: 0 0 16px;
+  opacity: 0.85;
+  font-size: 13px;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.form__group label {
+  display: block;
+  margin-bottom: 6px;
+  opacity: 0.9;
+  font-size: 13px;
+}
